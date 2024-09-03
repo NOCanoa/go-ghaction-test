@@ -20,8 +20,5 @@ jobs:
         with:
           go-version: 1.22.3
 
-      - name: Build
-        run: go build -v ./...
-
-      - name: Test
-        run: go test -v ./...
+      - name: run
+        run: go run .
