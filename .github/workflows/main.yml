@@ -22,7 +22,7 @@ jobs:
 
 
       - name:  build
-        run: go build
+        run: go build main.go
 
       - name: run
         run: ./main
