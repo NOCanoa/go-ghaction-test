@@ -23,7 +23,7 @@ jobs:
         id: read_release_notes
         run: |
           RELEASE_NOTES=$(cat RELEASE_NOTES.md)
-          echo "::set-output name=notes::$RELEASE_NOTES"
+          echo "::set-output name=notes::$(printf '%s\n' "$RELEASE_NOTES")"
 
       - name: Create Release
         run: |
