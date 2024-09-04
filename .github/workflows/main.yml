@@ -25,4 +25,4 @@ jobs:
         run: go build
 
       - name: run
-        run: go-ghaction-test
+        run: ./main
