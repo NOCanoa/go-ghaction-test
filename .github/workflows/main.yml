@@ -2,6 +2,7 @@ name: Go
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   build:
@@ -19,5 +20,9 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
 
+
+      - name:  build
+        run: go build
+
       - name: run
-        run: go run . ${{ secrets.WEBHOOK }}
+        run: go-ghaction-test
