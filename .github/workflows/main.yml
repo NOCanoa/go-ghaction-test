@@ -20,4 +20,4 @@ jobs:
           go-version: ${{ matrix.go-version }}
 
       - name: run
-        run: go run . ${{ secret.WEBHOOK }}
+        run: go run . ${{ secrets.WEBHOOK }}
