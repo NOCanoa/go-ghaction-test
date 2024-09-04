@@ -18,7 +18,7 @@ type Githubstuff struct {
 
 func main() {
 
-	res, err := http.Get("https://api.github.com/repos/NOCanoa/simple-html/releases/latest")
+	res, err := http.Get("https://api.github.com/repos/NOCanoa/go-ghaction-test/releases/latest")
 	if err != nil {
 		panic(err)
 	}
