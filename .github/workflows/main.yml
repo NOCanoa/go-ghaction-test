@@ -22,14 +22,16 @@ jobs:
       - name: Read Release Notes
         id: read_release_notes
         run: |
-          RELEASE_NOTES=$(cat RELEASE_NOTES.txt)
-          echo "::set-output name=notes::$(printf '%s\n' "$RELEASE_NOTES")"
+          RELEASE_NOTES=$(cat RELEASE_NOTES.md)
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          echo "$RELEASE_NOTES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create Release
         run: |
           gh release create 1.1.1.1.21 \
             --title "Release 1.1.1.1.21" \
-            --notes "${{ steps.read_release_notes.outputs.notes }}" \
+            --notes "${RELEASE_NOTES}" \
             ./main.go
             
       - name: Set up Go
@@ -39,4 +41,4 @@ jobs:
 
       - name: run
         run: go run main.go ${{ secrets.WEBHOOK }}
-        
+
