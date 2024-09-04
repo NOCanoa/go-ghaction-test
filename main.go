@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 )
 
 type Githubstuff struct {
@@ -41,7 +42,10 @@ func main() {
 
 	/* fmt.Print(github.Body) */
 
-	webhookURL := "https://discord.com/api/webhooks/1279832310040231987/rBN3_OQpJ9Wq-ydH5do3sU_gih_VkwhbR603d1aKGvDQpOa5Wy8q_cjWFr4p1Y45Qhbz"
+	webhookURL := "no-webhook"
+	if len(os.Args) >= 2 {
+		webhookURL = os.Args[1]
+	}
 	message := map[string]interface{}{
 		"content":    "",
 		"username":   "ZenDroid",
