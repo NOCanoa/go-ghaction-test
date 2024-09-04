@@ -19,10 +19,6 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
 
-
-      - name:  build
-        run: go build main.go
-
       - name: run
-        run: ./main ${{ secrets.WEBHOOK }}
+        run: go run main.go ${{ secrets.WEBHOOK }}
         
