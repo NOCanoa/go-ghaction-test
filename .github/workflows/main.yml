@@ -2,6 +2,7 @@ name: Go
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   build:
@@ -13,11 +14,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set up GitHub CLI
-        uses: actions/setup-gh@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Read Release Notes
         id: read_release_notes
