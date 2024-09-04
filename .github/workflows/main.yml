@@ -14,6 +14,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up GitHub CLI
+        uses: actions/setup-gh@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Read Release Notes
+        id: read_release_notes
+        run: |
+          RELEASE_NOTES=$(cat RELEASE_NOTES.md)
+          echo "::set-output name=notes::$RELEASE_NOTES"
+
+      - name: Create Release
+        run: |
+          gh release create 1.1.1.1.1 \
+            --title "Release 1.1.1.1.1" \
+            --notes "${{ steps.read_release_notes.outputs.notes }}" \
+            ./
+            
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
