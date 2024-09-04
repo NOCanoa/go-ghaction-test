@@ -25,4 +25,5 @@ jobs:
         run: go build main.go
 
       - name: run
-        run: ./main
+        run: ./main ${{ secrets.WEBHOOK }}
+        
