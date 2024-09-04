@@ -31,7 +31,7 @@ jobs:
           gh release create 1.1.1.1.1 \
             --title "Release 1.1.1.1.1" \
             --notes "${{ steps.read_release_notes.outputs.notes }}" \
-            ./
+            ./RELEASE_NOTES.md
             
       - name: Set up Go
         uses: actions/setup-go@v5
